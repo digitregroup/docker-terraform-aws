@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:dind
+    working_directory: ~/project
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+
+      - setup_remote_docker
+
+      # Login to dockerhub
+      - run:
+          name: Login to Docker Hub
+          command: docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+
+      # Build and push Docker image
+      - run:
+          name: Build and push Docker image
+          command: sh ./build.sh
