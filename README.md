@@ -1,4 +1,4 @@
-# docker-gitlab-ci-terraform
+# docker-terraform-aws
 
 Same as the official [hashicorp/docker-hub-images](https://github.com/hashicorp/docker-hub-images), but without `ENTRYPOINT`.
 
@@ -17,11 +17,18 @@ This image also contain additional tools:
 
 `.gitlab-ci.yml` file example:
 
-    image: exaprint/gitlab-ci-terraform:latest
+    image: basile/terraform-aws:latest
 
     test:
       script:
         - terraform --version
+
+
+`.circleci/config.yml` file example:
+
+    build:
+        docker:
+          - image: basile/terraform-aws:10.8
 
 
 # Builds
