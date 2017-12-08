@@ -14,6 +14,7 @@ RUN apk -v --update add \
         groff \
         less \
         mailcap \
+        openssh-client \
         && \
     pip install --upgrade pip && \
     pip install --upgrade setuptools distribute awscli s3cmd awsebcli python-magic && \
