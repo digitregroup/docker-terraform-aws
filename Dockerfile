@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER "L0gIn <basiletrujillo@gmail.com>"
 
-ENV TERRAFORM_VERSION=0.11.8
+ENV TERRAFORM_VERSION=0.11.14
 
 RUN apk -v --update add \
         zip \
