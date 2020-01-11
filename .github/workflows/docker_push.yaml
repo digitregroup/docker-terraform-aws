@@ -21,6 +21,7 @@ jobs:
       - name: Push the Docker image to docker Hub
         env:
           DOCKER_IMAGE_PREFIX: ${{ secrets.DOCKER_HUB_LOGIN }}
+          DOCKER_TAG: ${{ github.ref }}
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_LOGIN }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
           bash docker_publish.sh
@@ -28,6 +29,7 @@ jobs:
       - name: Push the Docker image to Github packages
         env:
           DOCKER_IMAGE_PREFIX: docker.pkg.github.com/${{ github.repository }}
+          DOCKER_TAG: ${{ github.ref }}
         run: |
           docker login docker.pkg.github.com --username ${{ secrets.GITHUB_LOGIN }} -p ${{ secrets.GITHUB_TOKEN }}
           bash docker_publish.sh

@@ -2,6 +2,8 @@
 
 source .env
 
+echo ${DOCKER_IMAGE_PREFIX}
+
 docker tag ${DOCKER_NAME} ${DOCKER_IMAGE_PREFIX}/${DOCKER_NAME}:${DOCKER_TAG} && \
 docker tag ${DOCKER_NAME} ${DOCKER_IMAGE_PREFIX}/${DOCKER_NAME}:latest && \
 docker push ${DOCKER_IMAGE_PREFIX}/${DOCKER_NAME}:${DOCKER_TAG} && \
