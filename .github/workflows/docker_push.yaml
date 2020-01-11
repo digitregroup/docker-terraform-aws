@@ -1,0 +1,31 @@
+name: CD
+
+on:
+  push: [tags]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Build the Docker image
+        run: bash docker_build.sh
+
+      - name: Push the Docker image to docker Hub
+        env:
+          DOCKER_IMAGE_PREFIX: ${{ secret.DOCKER_HUB_LOGIN }}
+        run: |
+          docker login -u ${{ secret.DOCKER_HUB_LOGIN }} -p ${{ DOCKER_HUB_PASSWORD }}
+          bash docker_publish.sh
+
+      - name: Push the Docker image to Github packages
+        env:
+          DOCKER_IMAGE_PREFIX: docker.pkg.github.com/${{ github.repository }}
+        run: |
+          docker login docker.pkg.github.com --username $GITHUB_LOGIN -p ${{ secrets.GITHUB_TOKEN }}
+          bash docker_publish.sh

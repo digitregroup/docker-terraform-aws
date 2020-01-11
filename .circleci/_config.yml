@@ -20,4 +20,4 @@ jobs:
       # Build and push Docker image
       - run:
           name: Build and push Docker image
-          command: sh ./docker_build.sh && sh ./docker_push.sh
+          command: sh ./docker_build.sh && sh ./docker_publish.sh
