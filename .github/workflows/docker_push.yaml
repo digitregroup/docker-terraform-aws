@@ -25,10 +25,13 @@ jobs:
           echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_LOGIN }} --password-stdin && \
           bash docker_publish.sh
 
-      - name: Push the Docker image to Github packages
-        env:
-          DOCKER_IMAGE_PREFIX: "docker.pkg.github.com/${{ github.repository }}"
-        run: |
-          docker logout && \
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GITHUB_LOGIN }} --password-stdin && \
-          bash github_packages_publish.sh
+# Disabled because of the following unresolved issue while pushing image on github packages:
+# Error parsing reference: "docker.pkg.github.com/***/docker-terraform-aws/terraform-aws:0.12.19" is not a valid repository/tag: invalid reference format: repository name must be lowercase
+#
+#      - name: Push the Docker image to Github packages
+#        env:
+#          DOCKER_IMAGE_PREFIX: "docker.pkg.github.com/${{ github.repository }}"
+#        run: |
+#          docker logout && \
+#          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GITHUB_LOGIN }} --password-stdin && \
+#          bash github_packages_publish.sh
