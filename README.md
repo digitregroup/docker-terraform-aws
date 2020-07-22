@@ -30,7 +30,7 @@ This image also contain additional tools:
 
     build:
         docker:
-          - image: basile/terraform-aws:0.12.19
+          - image: basile/terraform-aws:0.12.28
 
 
 # Builds
