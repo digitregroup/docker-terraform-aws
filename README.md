@@ -1,9 +1,9 @@
 # docker-terraform-aws
 
-[![](https://images.microbadger.com/badges/version/basile/terraform-aws.svg)](https://hub.docker.com/repository/docker/basile/terraform-aws)
-[![](https://images.microbadger.com/badges/image/basile/terraform-aws.svg)](https://hub.docker.com/repository/docker/basile/terraform-aws)
+[![](https://images.microbadger.com/badges/version/digitregroup/terraform-aws.svg)](https://hub.docker.com/repository/docker/digitregroup/terraform-aws)
+[![](https://images.microbadger.com/badges/image/digitregroup/terraform-aws.svg)](https://hub.docker.com/repository/docker/digitregroup/terraform-aws)
 
-[![](https://dockeri.co/image/basile/terraform-aws)](https://hub.docker.com/r/basile/terraform-aws)
+[![](https://dockeri.co/image/digitregroup/terraform-aws)](https://hub.docker.com/r/digitregroup/terraform-aws)
 
 Same as the official [hashicorp/docker-hub-images](https://github.com/hashicorp/docker-hub-images), but without `ENTRYPOINT`.
 
@@ -24,7 +24,7 @@ This image also contain additional tools:
 
 `.gitlab-ci.yml` file example:
 
-    image: basile/terraform-aws:latest
+    image: digitregroup/terraform-aws:latest
 
     test:
       script:
@@ -35,7 +35,7 @@ This image also contain additional tools:
 
     build:
         docker:
-          - image: basile/terraform-aws:0.12.28
+          - image: digitregroup/terraform-aws:0.12.28
 
 
 # Builds
