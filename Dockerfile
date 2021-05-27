@@ -1,6 +1,6 @@
 FROM alpine:3.10.3
 
-ENV TERRAFORM_VERSION=0.13.7
+ENV TERRAFORM_VERSION=0.15.4
 
 RUN apk -v --update add \
         zip \
