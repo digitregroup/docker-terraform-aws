@@ -1,6 +1,6 @@
-FROM alpine:3.10.3
+FROM alpine:3.14.2
 
-ENV TERRAFORM_VERSION=0.15.4
+ENV TERRAFORM_VERSION=1.0.9
 
 RUN apk -v --update add \
         zip \
@@ -9,26 +9,37 @@ RUN apk -v --update add \
         bash \
         wget \
         jq \
-        python \
-        py-pip \
-        python-dev \
+        libffi \
+        gcc \
+        libc-dev \
+        python3 \
+        musl-dev \
+        python3-dev \
+        openssl-dev \
+        cargo \
+        libffi-dev \
+        py3-pip \
         groff \
         less \
         mailcap \
         openssh-client \
+        make \
+        cmake \
         && rm /var/cache/apk/*
 
-RUN pip install --upgrade awscli==1.16.278 --target /usr/local/lib/awscli \
+RUN pip install cryptography --no-binary cryptography
+
+RUN pip3 install --upgrade awscli==1.21.0 --target /usr/local/lib/awscli \
     && printf '#!/bin/sh\nPYTHONPATH=/usr/local/lib/awscli /usr/local/lib/awscli/bin/aws "$@"\n' \
     > /usr/local/bin/aws \
     && chmod +x /usr/local/bin/aws
 
-RUN pip install --upgrade awsebcli==3.15.3 --target /usr/local/lib/awsebcli \
+RUN pip3 install --upgrade awsebcli==3.20.2 --target /usr/local/lib/awsebcli \
     && printf '#!/bin/sh\nPYTHONPATH=/usr/local/lib/awsebcli /usr/local/lib/awsebcli/bin/eb "$@"\n' \
     > /usr/local/bin/eb \
     && chmod +x /usr/local/bin/eb
 
-RUN pip install --upgrade s3cmd==2.0.2 --target /usr/local/lib/s3cmd \
+RUN pip3 install --upgrade s3cmd==2.2.0 --target /usr/local/lib/s3cmd \
     && printf '#!/bin/sh\nPYTHONPATH=/usr/local/lib/s3cmd /usr/local/lib/s3cmd/bin/s3cmd "$@"\n' \
     > /usr/local/bin/s3cmd \
     && chmod +x /usr/local/bin/s3cmd
