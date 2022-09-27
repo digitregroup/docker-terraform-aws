@@ -11,12 +11,12 @@ Like some other CI/CD plateform Gitlab CI does not let you override `ENTRYPOINT`
 
 This image removes the entrypoint, allowing the container operator (the Gitlab-CI runner) to specify which `CMD` to invoke the container with.
 
-Base image is: alpine 3.10.3
+Base image is: alpine 3.16.2
 
 This image also contain additional tools:
- * AWS CLI [aws-cli 1.16.278]
- * AWS EB CLI [awsebcli 3.15.3]
- * AWS S3 CLI [s3cmd 2.0.2]
+ * AWS CLI [aws-cli 1.25.82]
+ * AWS EB CLI [awsebcli 3.20.3]
+ * AWS S3 CLI [s3cmd 2.2.0]
  * JQ
  * WGET
 
@@ -35,7 +35,7 @@ This image also contain additional tools:
 
     build:
         docker:
-          - image: digitregroup/terraform-aws:0.12.28
+          - image: digitregroup/terraform-aws:1.3.0
 
 
 # Builds
